@@ -46,7 +46,7 @@
       "name": "Blog",
       "icon": "newspaper",
       "url": "https://mintlify.com/blog"
-    }
+    },
     {
       "name": "Assistant Engine API Reference",
       "openapi": "openapi.yaml",
