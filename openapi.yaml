@@ -1,0 +1,503 @@
+openapi: 3.0.0
+info:
+  title: 'The Assistant Engine API'
+  version: '0.1'
+paths:
+  '/{tenantId}/projects/{projectId}/conversations':
+    get:
+      summary: 'List all active conversations for an assistant'
+      operationId: 29d9a4dd8ca7d408e614aa2dcd1f6975
+      parameters:
+        -
+          name: tenantId
+          in: path
+          description: "The tenant's unique identifier."
+          required: true
+          schema:
+            type: string
+          example: '{{tenantId}}'
+        -
+          name: projectId
+          in: path
+          description: "The project's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{projectId}}'
+        -
+          name: user_id
+          in: query
+          description: 'The id of the user'
+          required: true
+          schema:
+            type: string
+          example: '{{user_id}}'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AssistantThread'
+        '422':
+          description: 'Validation error'
+        '500':
+          description: 'Internal server error'
+    post:
+      summary: 'Find or create conversation'
+      operationId: 43603765f605f994d898585de4f42a82
+      parameters:
+        -
+          name: tenantId
+          in: path
+          description: "The tenant's unique identifier."
+          required: true
+          schema:
+            type: string
+          example: '{{tenantId}}'
+        -
+          name: projectId
+          in: path
+          description: "The project's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{projectId}}'
+        -
+          name: x-llm-key
+          in: header
+          description: 'The API key for the LLM provider (e.g., OpenAI).'
+          required: true
+          schema:
+            type: string
+          example: '{{your_llm_provider_key}}'
+      requestBody:
+        description: 'Conversation find or create'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationOption'
+      responses:
+        '201':
+          description: 'Conversation created successfully'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistantThread'
+        '400':
+          description: 'x-llm-key header is missing'
+        '422':
+          description: 'Validation error'
+        '500':
+          description: 'Internal server error'
+  '/{tenantId}/projects/{projectId}/conversations/{conversationId}':
+    get:
+      summary: 'Show a conversation with messages'
+      operationId: 7d74a8f132a45f2726d39ed9987f4585
+      parameters:
+        -
+          name: tenantId
+          in: path
+          description: "The tenant's unique identifier."
+          required: true
+          schema:
+            type: string
+          example: '{{tenantId}}'
+        -
+          name: projectId
+          in: path
+          description: "The project's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{projectId}}'
+        -
+          name: conversationId
+          in: path
+          description: "The conversation's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{conversationId}}'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistantThread'
+        '404':
+          description: 'Conversation not found'
+        '500':
+          description: 'Internal server error'
+    delete:
+      summary: 'Inactivate a conversation'
+      operationId: 62b7145c64e9d4f730098d693f8ac1d2
+      parameters:
+        -
+          name: tenantId
+          in: path
+          description: "The tenant's unique identifier."
+          required: true
+          schema:
+            type: string
+          example: '{{tenantId}}'
+        -
+          name: projectId
+          in: path
+          description: "The project's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{projectId}}'
+        -
+          name: conversationId
+          in: path
+          description: "The conversation's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{conversationId}}'
+      responses:
+        '200':
+          description: 'Conversation inactivated successfully'
+        '404':
+          description: 'Conversation not found'
+        '500':
+          description: 'Internal server error'
+    patch:
+      summary: 'Update a conversation'
+      operationId: e126559df2a9fffe5e9dda35068e9c50
+      parameters:
+        -
+          name: tenantId
+          in: path
+          description: "The tenant's unique identifier."
+          required: true
+          schema:
+            type: string
+          example: '{{tenantId}}'
+        -
+          name: projectId
+          in: path
+          description: "The project's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{projectId}}'
+        -
+          name: conversationId
+          in: path
+          description: "The conversation's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{conversationId}}'
+      requestBody:
+        description: 'Update conversation details'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationUpdateOption'
+      responses:
+        '200':
+          description: 'Conversation updated successfully'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistantThread'
+        '404':
+          description: 'Conversation not found'
+        '422':
+          description: 'Validation error'
+        '500':
+          description: 'Internal server error'
+  '/{tenantId}/projects/{projectId}/conversations/{conversationId}/messages':
+    post:
+      summary: 'Create a message'
+      operationId: 814f89e89dab2b9a09ad1aad3850c1d9
+      parameters:
+        -
+          name: tenantId
+          in: path
+          description: "The tenant's unique identifier."
+          required: true
+          schema:
+            type: string
+          example: '{{tenantId}}'
+        -
+          name: projectId
+          in: path
+          description: "The project's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{projectId}}'
+        -
+          name: conversationId
+          in: path
+          description: "The conversation's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{conversationId}}'
+        -
+          name: x-llm-key
+          in: header
+          description: 'The API key for the LLM provider (e.g., OpenAI).'
+          required: true
+          schema:
+            type: string
+          example: '{{your_llm_provider_key}}'
+      requestBody:
+        description: 'Creates a message'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageOption'
+      responses:
+        '201':
+          description: 'Message created successfully'
+        '400':
+          description: 'x-llm-key header is missing'
+        '422':
+          description: 'Validation error'
+        '500':
+          description: 'Internal server error'
+  '/{tenantId}/projects/{projectId}/tasks/{task}/runs':
+    post:
+      summary: 'Initiate a task run by sending a context message'
+      operationId: 247d9dd4bf5089faf9d4e386b027c085
+      parameters:
+        -
+          name: tenantId
+          in: path
+          description: "The tenant's unique identifier."
+          required: true
+          schema:
+            type: string
+          example: '{{tenantId}}'
+        -
+          name: projectId
+          in: path
+          description: "The project's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{projectId}}'
+        -
+          name: task
+          in: path
+          description: "The task's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{task}}'
+        -
+          name: x-llm-key
+          in: header
+          description: 'The API key for the LLM provider (e.g., OpenAI).'
+          required: true
+          schema:
+            type: string
+          example: '{{your_llm_provider_key}}'
+      requestBody:
+        description: 'Payload to create a task run'
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskRunOption'
+      responses:
+        '201':
+          description: 'Task run created successfully'
+          content:
+            application/json:
+              schema:
+                properties:
+                  run_id: { description: 'The unique identifier of the created task run.', type: integer }
+                type: object
+        '400':
+          description: 'x-llm-key header is missing'
+        '422':
+          description: 'Validation error: context is missing or malformed'
+        '500':
+          description: 'Internal server error'
+  '/{tenantId}/projects/{projectId}/tasks/{task}/runs/{runId}':
+    get:
+      summary: 'Retrieve task run information and messages'
+      operationId: 98099430af2c1c02a4a0ee10f0da6699
+      parameters:
+        -
+          name: tenantId
+          in: path
+          description: "The tenant's unique identifier."
+          required: true
+          schema:
+            type: string
+          example: '{{tenantId}}'
+        -
+          name: projectId
+          in: path
+          description: "The project's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{projectId}}'
+        -
+          name: task
+          in: path
+          description: "The task's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{task}}'
+        -
+          name: runId
+          in: path
+          description: "The task run's unique identifier."
+          required: true
+          schema:
+            type: integer
+          example: '{{runId}}'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskOutputResource'
+        '404':
+          description: 'Task run not found'
+        '500':
+          description: 'Internal server error'
+components:
+  schemas:
+    ConversationOption:
+      description: 'Represents the options for finding or creating a conversation.'
+      required:
+        - assistant_id
+      properties:
+        assistant_key:
+          description: 'The unique identifier of the assistant.'
+          type: string
+        user_id:
+          description: 'The unique identifier of the user.'
+          type: string
+        subject_id:
+          description: 'The unique identifier of the subject.'
+          type: string
+        recreate:
+          description: 'Indicates if the conversation should be recreated if it already exists.'
+          type: boolean
+        context:
+          description: 'Contextual data associated with the conversation.'
+          type: object
+        additional_data:
+          description: 'Additional data associated with the conversation.'
+          type: object
+        title:
+          description: 'Title of the conversation.'
+          type: string
+      type: object
+    ConversationUpdateOption:
+      description: 'Schema for updating conversation details'
+      properties:
+        title:
+          description: 'Title of the conversation'
+          type: string
+        context:
+          description: 'Contextual data associated with the conversation'
+          type: object
+        additional_data:
+          description: 'Additional data associated with the conversation'
+          type: object
+      type: object
+    MessageOption:
+      description: 'Represents the options for sending a message in a conversation.'
+      required:
+        - message
+      properties:
+        message:
+          description: 'The content of the message to be sent.'
+          type: string
+      type: object
+    TaskRunOption:
+      description: 'Represents the options for running a task by sending a message with context.'
+      required:
+        - context
+      properties:
+        context:
+          description: 'The array of content representing the task context to be sent.'
+          type: object
+      type: object
+    AssistantThread:
+      description: 'Represents a conversation thread with an assistant.'
+      properties:
+        id:
+          description: 'The unique identifier of the assistant thread.'
+          type: integer
+        is_initializing:
+          description: 'Indicates if the assistant thread is initializing.'
+          type: boolean
+        is_active:
+          description: 'Indicates if the assistant thread is active.'
+          type: boolean
+        user_id:
+          description: 'The external user identifier.'
+          type: string
+        subject_id:
+          description: 'The unique identifier of the subject.'
+          type: string
+        assistant_id:
+          description: 'The unique identifier of the assistant.'
+          type: integer
+        is_locked:
+          description: 'Indicates if the assistant thread is locked.'
+          type: boolean
+        is_running:
+          description: 'Indicates if the assistant thread is currently running.'
+          type: boolean
+        messages:
+          description: 'A list of messages in the conversation thread.'
+          type: array
+          items:
+            properties:
+              role:
+                description: 'The role of the entity that sent the message.'
+                type: string
+                enum:
+                  - user
+                  - assistant
+                  - system
+              content:
+                description: 'The content of the message.'
+                type: string
+            type: object
+      type: object
+    TaskOutputResource:
+      description: 'Represents the output of a task run, including task information, status, and messages.'
+      properties:
+        id:
+          description: 'The unique identifier of the task run.'
+          type: integer
+        task_id:
+          description: 'The unique identifier of the task'
+          type: integer
+        is_running:
+          description: 'Indicates if the task run is currently active.'
+          type: boolean
+        output:
+          description: 'The aggregated output messages from the task run.'
+          type: string
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      bearerFormat: JWT
+      scheme: bearer

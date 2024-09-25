@@ -77,9 +77,17 @@
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "docs/find-or-create-conversation.mdx",
+        "docs/inactivate-a-conversation.mdx",
+        "docs/initiate-a-task-run-by-sending-a-context-message.mdx",
+        "docs/create-a-message.mdx",
+        "docs/retrieve-task-run-information-and-messages.mdx",
+        "docs/list-all-active-conversations-for-an-assistant.mdx",
+        "docs/show-a-conversation-with-messages.mdx",
+        "docs/update-a-conversation.mdx"
+
+
+
       ]
     }
   ],
