@@ -49,7 +49,7 @@
     },
     {
       "name": "Assistant Engine API Reference",
-      "openapi": "openapi.yaml",
+      "openapi": "/openapi.yaml",
       "url": "assistant-engine-reference",
       "icon": "square-terminal"
     }
