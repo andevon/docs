@@ -28,7 +28,7 @@
   "tabs": [
     {
       "name": "API Reference",
-      "url": "api-reference"
+      "url": "docs/openai.yaml"
     }
   ],
   "anchors": [
@@ -77,14 +77,14 @@
     {
       "group": "Endpoint Examples",
       "pages": [
-        "docs/find-or-create-conversation.mdx",
-        "docs/inactivate-a-conversation.mdx",
-        "docs/initiate-a-task-run-by-sending-a-context-message.mdx",
-        "docs/create-a-message.mdx",
-        "docs/retrieve-task-run-information-and-messages.mdx",
-        "docs/list-all-active-conversations-for-an-assistant.mdx",
-        "docs/show-a-conversation-with-messages.mdx",
-        "docs/update-a-conversation.mdx"
+        "docs/assistant-engine-openapi/find-or-create-conversation.mdx",
+        "docs/assistant-engine-openapi/inactivate-a-conversation.mdx",
+        "docs/assistant-engine-openapi/initiate-a-task-run-by-sending-a-context-message.mdx",
+        "docs/assistant-engine-openapi/create-a-message.mdx",
+        "docs/assistant-engine-openapi/retrieve-task-run-information-and-messages.mdx",
+        "docs/assistant-engine-openapi/list-all-active-conversations-for-an-assistant.mdx",
+        "docs/assistant-engine-openapi/show-a-conversation-with-messages.mdx",
+        "docs/assistant-engine-openapi/update-a-conversation.mdx"
 
 
 
