@@ -8,11 +8,11 @@
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#23C55E",
-    "light": "#23C55E70",
+    "light": "#28DF6B",
     "dark": "#23C55E",
     "anchors": {
       "from": "#23C55E",
-      "to": "##23C55E70"
+      "to": "#28DF6B"
     }
   },
   "topbarLinks": [
@@ -29,7 +29,7 @@
     {
       "name": "API Reference",
       "openapi": "/openapi.yaml",
-      "url": "api-reference",
+      "url": "api-reference"
     }
   ],
   "navigation": [
@@ -40,6 +40,6 @@
         "quickstart",
         "development"
       ]
-    },
+    }
   ]
 }
