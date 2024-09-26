@@ -7,53 +7,30 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#23C55E",
+    "light": "#23C55E70",
+    "dark": "#23C55E",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#23C55E",
+      "to": "##23C55E70"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:florian.g.weigang@gmail.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Go to App",
+    "url": "https://app.assistant-engine.com"
   },
   "tabs": [
     {
       "name": "API Reference",
-      "url": "/Users/andrevonau/Documents/vscode/git/docs/assistant-engine-openapi"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    },
-    {
-      "name": "Assistant Engine API Reference",
       "openapi": "/openapi.yaml",
-      "url": "assistant-engine-reference",
-      "icon": "square-terminal"
+      "url": "api-reference",
     }
-    
   ],
   "navigation": [
     {
@@ -64,43 +41,5 @@
         "development"
       ]
     },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "docs/assistant-engine-openapi/find-or-create-conversation.mdx",
-        "docs/assistant-engine-openapi/inactivate-a-conversation.mdx",
-        "docs/assistant-engine-openapi/initiate-a-task-run-by-sending-a-context-message.mdx",
-        "docs/assistant-engine-openapi/create-a-message.mdx",
-        "docs/assistant-engine-openapi/retrieve-task-run-information-and-messages.mdx",
-        "docs/assistant-engine-openapi/list-all-active-conversations-for-an-assistant.mdx",
-        "docs/assistant-engine-openapi/show-a-conversation-with-messages.mdx",
-        "docs/assistant-engine-openapi/update-a-conversation.mdx"
-
-
-
-      ]
-    }
-  ],
-  "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
-  }
+  ]
 }
