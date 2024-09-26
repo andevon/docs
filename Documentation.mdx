@@ -1,0 +1,435 @@
+# Assistant-Engine Developer Documentation
+
+## **Introduction**
+
+### **What is Assistant-Engine?**
+
+Assistant-Engine empowers developers to seamlessly integrate AI functionalities into their Laravel and Filament applications. By offering pre-built UI components and a robust API, it accelerates the development process, enabling the creation of intelligent assistants and tasks with advanced, context-aware multitasking and tool execution.
+
+### **Versioning Information**
+
+Documentation Version: 1.0.0
+Last Updated: September 24, 2024
+
+---
+
+## **Getting Started**
+
+### **Prerequisites**
+
+Before installing Assistant-Engine, ensure you have the following prerequisites:
+
+- **PHP**: Version 8.0 or higher
+- **Laravel**: Version 9.x or higher
+- **Composer**: Latest stable version
+- **Filament**: Optional, for using pre-built UI components
+
+### **Account & Plan**
+
+#### **1. Sign Up for an Account**
+
+To begin using Assistant-Engine, sign up for an account at:
+
+```plaintext
+https://assistant-engine.com
+```
+
+#### **2. Choose Your Plan**
+
+After signing up, select a subscription plan that best suits your needs. Assistant-Engine offers three subscription tiers:
+
+| Feature                | Free Plan             | Pro Plan              | Enterprise Plan        |
+|------------------------|-----------------------|-----------------------|------------------------|
+| **Projects**           | 1 project             | 3 projects     | Unlimited              |
+| **Tasks**              | 3 tasks | 10 tasks| Unlimited              |
+| **Assistants**    | 1 assistant      | 5 assistants     | Unlimited              |
+| **Tools**         | 1 tool             | 10 tools          | Unlimited              |
+| **Calls**         | 500/month             | 10,000/month          | Unlimited              |
+| **Pay As You Go Option**         | No             | Soon         | Soon              |
+| **Multitasking (Tab view)**         | Yes                 | Yes              | Yes                   |
+| **Voice Integration via UI components**  | Yes                    | Yes                   | Yes                    |
+| **Context Management**  | Yes                    | Yes                   | Yes                    |
+| **Monitoring & Traceability**  | Yes                    | Yes                   | Yes                    |
+| **Support**            | Standard                     | Standard                     | Custom Support         |
+
+After selecting your plan, you will have access to the Assistant-Engine admin panel to begin integrating AI into your projects.
+
+### **Installation**
+
+#### **1. PHP SDK Installation**
+
+To begin, install the Assistant-Engine PHP SDK via Composer:
+
+```bash
+composer require assistant-engine/sdk
+```
+
+#### **2. Filament Plugin Installation (Optional)**
+
+To use the pre-built UI components in Filament, install the Filament plugin via GitHub:
+
+XYZ
+
+**[INSERT SCREENSHOT OF FILAMENT PLUGIN INSTALLATION HERE]**
+
+Alternatively, you can create your own components by directly using the Assistant-Engine API, giving you full control over the integration and customization.
+
+### **Configuration**
+
+#### **1. Environment Configuration**
+
+Add your Assistant-Engine API key to your `.env` file:
+
+```plaintext
+ASSISTANT_ENGINE_API_KEY=your_api_key_here
+```
+
+Ensure your Laravel application is properly configured to use this key:
+
+```php
+// config/assistant-engine.php
+
+return [
+    'api_key' => env('ASSISTANT_ENGINE_API_KEY', ''),
+];
+```
+
+> **Note:** Reference the [API Key Generation](#api-key-generation) section in the Core Concepts part for details on how to obtain your API key.
+
+> **Security Tip:** Ensure that your `.env` file is excluded from version control systems like Git to prevent exposing your API keys. Consider using environment variable management tools or services for enhanced security.
+
+
+---
+
+
+## **Core Concepts**
+
+### **Projects**
+
+#### **Creating a Project**
+
+Projects are the primary containers for your tasks, assistants, and tools. To create a new project:
+
+1. Navigate to the **Projects** section in the Assistant-Engine admin panel.
+2. Click on **New Project**.
+3. Enter a project name and description (e.g., `reqms.ai | SaaS Platform`, `All AI Assistants & Tasks for reqms.ai`) and click **Submit**.
+
+> **Note:** Each project in Assistant-Engine operates in isolation, ensuring that tasks, assistants, and tools are compartmentalized. This isolation enhances security and allows for tailored configurations per project.
+
+You will now see your project listed in the admin panel under the section "Projects".
+
+### **Tasks**
+
+#### **Creating a Task**
+
+Tasks are units of work that your assistants will perform based on predefinition. To create a new task:
+
+1. Within your project, navigate to the **Tasks** section.
+2. Click on **New Task**.
+3. Fill in the task details:
+   - **Title**: A concise name for the task (e.g., "Simplify Text Task").
+   - **Description**: A description of what the task is supposed to do.
+   - **Expected Output**: The desired outcome of the task.
+
+**Example Task Configuration:**
+
+```plaintext
+Title: Simplify Text Task
+Description: The task receives a text input and outputs a simplified version of it.
+Expected Output: A concise and clear version of the input text.
+```
+
+Save the task. You can now see it listed in the Tasks section.
+
+### **Assistants**
+
+#### **Setting Up an Assistant**
+
+Assistants in Assistant-Engine are designed to perform more complex, iterative tasks based on the configurations you provide. They are typically but not necessarily used in chat assistants such as our pre-built chat assistant for Filament. 
+Here’s how you can set up an assistant within your project:
+
+1. **Navigate to the Assistants Section**:
+   - In the **Projects** panel, select your project (e.g., `reqms.ai | SaaS Platform`).
+   - Click on **Assistants** in the sidebar.
+
+2. **Create a New Assistant**:
+   - Click on **New Assistant** to open the assistant creation form.
+
+3. **Enter Assistant Details**:
+   - **Title**: Name your assistant (e.g., "Product Assistant").
+   - **Key**: Aa unique key is assigned to your assistant for identification. This can be used in API calls to refer to this specific assistant (e.g., "product_assistant").
+   - **Model**: Select the AI model that will power this assistant. For example, choose `gpt-4` or `gpt-4-mini` depending on your requirements.
+
+**Example Configuration:**
+
+```plaintext
+Title: Product Assistant
+Key: product_assistant
+Model: gpt-4
+Max prompt tokens: none
+Max completion tokens: 1.000
+Truncation Strategy: Last messages
+Last messages count: 10
+
+```
+
+4. **Define the Assistant’s Role and Instructions**:
+   - In the **Agent Details** section, define the role and responsibilities of the assistant. This includes its interaction model, context, and specific instructions it should follow.
+
+**Example Role and Instructions:**
+
+```plaintext
+Role: You are Sammy, a principal Product Owner. Your task is to assist the product owner with generating suggestions, creating artifacts, and attaching notes within the reqms.ai platform.
+
+Instructions:
+1. Understand and Clarify: Comprehend the tasks assigned by the product owner. Ask questions if necessary for clarification.
+2. Use of Tools: Determine the most efficient tools and methods for task completion.
+3. CRUD Requests: Use the internal API to load schema definitions or operation details beforehand.
+4. Make a Plan: Use a "Chain-of-Thought" approach to break down the tasks. Seek feedback from the product owner if needed.
+5. Execution: Implement the plan, assisting the product owner in their role.
+6. Feedback: Inform the product owner of the actions taken but don’t go into details unless required.
+7. Questions: Ask for any necessary clarifications. Highlight actions or questions in a separate message.
+```
+
+After entering the instructions, click **Submit**.
+
+5. **Assign Tools to the Assistant**:
+   - If you have already set up tools, you can assign them to the assistant for use in its tasks. This enhances the assistant’s capabilities, allowing it to perform specific functions such as making API calls or interacting with external services.
+
+**[INSERT DETAILS ABOUT ADVANCED SETTINGS HERE, IF AVAILABLE]**
+
+### **Tools**
+
+#### **Creating a New Tool**
+
+Tools in Assistant-Engine are resources that assist assistants in performing their tasks. You can create tools that utilize external APIs or internal services, and they are configured using an OpenAPI schema.
+
+Here’s how to create a new tool and integrate it with an OpenAPI schema:
+
+1. **Navigate to the Tools Section**:
+   - In the **Projects** panel, select your project (e.g., `reqms.ai | SaaS Platform`).
+   - Click on **Tools** in the sidebar.
+
+2. **Create a New Tool**:
+   - Click on **Add Tool** to open the tool creation form.
+
+3. **Enter Tool Details**:
+   - **Title**: Name your tool (e.g., "reqms.ai Internal API").
+   - **Description**: Provide a brief description of the tool and its purpose. This helps in understanding what the tool does within the context of the project.
+
+**Example:**
+
+```plaintext
+Title: reqms.ai Internal API
+Description: This tool allows the assistant to interact with the internal API of the reqms.ai platform to manage product ideas and related tasks.
+```
+
+4. **Provide the API Definition (OpenAPI Schema)**:
+   - In the **API Definition** section, include the OpenAPI schema that defines the API's endpoints, request and response formats, and other relevant details.
+
+**Example API Definition:**
+
+```yaml
+openapi: 3.0.0
+info:
+  title: reqms.ai Internal API
+  version: 1.0.0
+paths:
+  /products/{id}/ideas:
+    get:
+      tags:
+      - ideas
+      summary: List all product ideas
+      operationId: getAllIdeas
+      parameters:
+      - name: id
+        in: path
+        description: The id of the product
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of product ideas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductIdea'
+  /products/ideas:
+    post:
+      tags:
+      - ideas
+      summary: Create a new product idea
+      operationId: createProductIdea
+      requestBody:
+        description: Product idea data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductIdeaCreate'
+      responses:
+        '201':
+          description: Product idea created successfully
+components:
+  schemas:
+    ProductIdea:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+    ProductIdeaCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+```
+
+- Paste your OpenAPI schema in the provided field.
+
+5. **Save the Tool**:
+   - After filling in all the necessary details, click **Submit**. Your tool will now be available for use by assistants within the project.
+
+### **API Key Generation**
+
+To interact with the Assistant-Engine via API, you need to generate an API key:
+
+1. **Navigate to the Projects Section**:
+   - Select your project from the **Projects** panel.
+
+2. **Go to the API Keys Tab**:
+   - Click on the **API Keys** tab within your project overview.
+
+3. **Create an API Key**:
+   - Click **Create Token**.
+   - Name your token (e.g., "staging") and save it.
+
+You can now use this token to authenticate your API calls.
+
+---
+
+## **Advanced Features**
+
+### **Monitoring and Traceability**
+
+#### **Viewing Task or Assistant History**
+
+To monitor and trace the execution of tasks:
+
+1. Go to the **Tasks** or **Assistants** section depending on which history you want to check.
+2. Select a task or assistant to view its execution history. You will see a list of all the times the task was executed, along with details such as status and output.
+
+This feature helps you debug and optimize task and assistant performances by reviewing how each task was handled.
+
+**[INSERT SCREENSHOT OF TASK HISTORY VIEW HERE]**
+
+#### **Detailed Monitoring Metrics**
+
+You can monitor various metrics such as:
+
+- **Timings**: Track how long tasks take to execute. See Run steps and Run duration as well as status (`incomplete`, `completed`)
+- **Tool Calls**: Monitor the tools called in the selected run and their request and response details.
+- **LLM Configuration**: For every message sent you can view historic information about **Instructions**, **Context**, **Tools**, **User Message, Chat History & LLM Response** used as well as the total **Raw Data** sent to and received from the LLM.
+- **Prompt Tokens** and **Completion Tokens**: Token count used in prompt and response to/from LLM
+
+### **API Integration**
+
+
+
+### **Multitenancy**
+
+#### **Managing Multiple Tenants**
+
+If your application needs to support multiple tenants:
+
+1. Ensure that each tenant has a unique project within the Assistant-Engine.
+2. Manage tenants by creating and assigning them to their respective projects within the admin panel.
+
+This allows you to isolate tasks, assistants, and tools per tenant.
+
+**[INSERT DIAGRAM OR SCREENSHOT OF MULTITENANCY MANAGEMENT HERE]**
+
+---
+
+## **Best Practices**
+
+### **Security**
+
+- **API Key Management**: Keep your API keys secure and never expose them in client-side code.
+- **Access Control**: Use role-based access control within the admin panel to restrict access to sensitive features.
+- **IP Whitelisting**: Restrict API access to specific IP addresses to enhance security.
+- **Rate Limiting**: Implement rate limiting to prevent abuse and ensure fair usage.
+- **Encryption**: Ensure all data in transit is encrypted using HTTPS.
+
+### **Performance Optimization**
+
+- **Task Efficiency**: Break down complex tasks into smaller, more manageable tasks to improve performance.
+- **API Rate Limiting**: Be mindful of the API call limits on your subscription plan to avoid service interruptions.
+- **Caching Strategies**:
+  - **Caching API Responses**: Implement caching for frequently accessed data to reduce API call latency and improve response times.
+  - **Asynchronous Processing**: Use asynchronous tasks for long-running operations to enhance application responsiveness.
+
+---
+
+## **Troubleshooting**
+
+### **Common Issues**
+
+#### **Task Execution Failures**
+
+- **Symptom**: Tasks are failing to execute.
+- **Solution**:
+  1. **Check Task History**: Review the task execution history for error messages.
+  2. **Review Logs**: Access the detailed logs in the **Monitoring** section of the admin panel.
+  3. **Validate Configuration**: Ensure that task configurations are correct and all required parameters are provided.
+  4. **Contact Support**: If the issue persists, reach out to [Support](feedback@assistant-engine.com) with relevant logs and error details.
+
+#### **API Errors**
+
+- **Symptom**: Receiving `401 Unauthorized` responses from the API.
+- **Solution**:
+  1. **Verify API Token**: Ensure that your API token is valid and has not expired.
+  2. **Check Authorization Header**: Make sure the token is correctly included in your API requests.
+  3. **Review Permissions**: Confirm that the API token has the necessary permissions for the requested operation.
+  4. **Contact Support**: If the issue continues, contact [Support](feedback@assistant-engine.com) for assistance.
+
+**[INSERT ADDITIONAL COMMON ISSUES AND SOLUTIONS HERE, IF NEEDED]**
+
+### **Support**
+
+For additional help, you can click on the Feedback Link in the Admin Panel or write to [feedback@assistant-engine.com](feedback@assistant-engine.com) directly.
+
+---
+
+
+
+### **FAQ**
+
+**Frequently Asked Questions (FAQ)**
+
+1. **How do I reset my API key?**
+   - To reset your API key, navigate to the **API Keys** tab in your project settings and click on **Reset Token** next to the key you wish to regenerate.
+
+2. **Can I upgrade my subscription plan at any time?**
+   - Yes, you can upgrade or downgrade your subscription plan at any time from the [Billing](https://assistant-engine.com/billing) section of your account.
+
+3. **Is there a limit to the number of projects I can create on the Free Plan?**
+   - Yes, the Free Plan allows for 1 project. To create more projects, consider upgrading to the Pro or Enterprise Plan.
+
+4. **How do I integrate Assistant-Engine with my existing Laravel application?**
+   - Follow the [Installation](#installation) and [Configuration](#configuration) sections to install the PHP SDK and Laravel package, then configure your `.env` file with your API key.
+
+5. **What should I do if I encounter an unexpected error?**
+   - First, check the task history and logs for error messages. If you cannot resolve the issue, contact our [Support Team](https://assistant-engine.com/support) with detailed information about the problem.
+
+**[ADD MORE FAQs AS NEEDED]**
+
+
