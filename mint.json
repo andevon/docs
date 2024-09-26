@@ -53,7 +53,7 @@
     {
       "group": "Advanced Features",
       "pages": [
-        "Monitoring & Traceability",
+        "Monitoring_&_Traceability",
         "Multitenancy"
       ]
     },
@@ -61,19 +61,19 @@
       "group": "Best Practices",
       "pages": [
         "Security",
-        "Performance Optimization"
+        "Performance_Optimization"
       ]
     },
     {
       "group": "Troubleshooting",
       "pages": [
-        "Common Issues"
+        "Common_Issues"
       ]
     },
     {
       "group": "FAQ",
       "pages": [
-        "Frequently Asked Questions"
+        "Frequently_Asked_Questions"
       ]
     }
   ]
