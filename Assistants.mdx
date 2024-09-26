@@ -1,0 +1,55 @@
+# **What are Assistants?**
+
+Assistants in Assistant-Engine are designed to perform more complex, iterative tasks based on the configurations you provide. They are typically but not necessarily used in chat assistants such as our pre-built chat assistant for Filament. 
+
+# **Setting Up an Assistant**
+
+1. **Navigate to the Assistants Section**:
+   - In the **Projects** panel, select your project (e.g., `reqms.ai | SaaS Platform`).
+   - Click on **Assistants** in the sidebar.
+
+2. **Create a New Assistant**:
+   - Click on **New Assistant** to open the assistant creation form.
+
+3. **Enter Assistant Details**:
+   - **Title**: Name your assistant (e.g., "Product Assistant").
+   - **Key**: Aa unique key is assigned to your assistant for identification. This can be used in API calls to refer to this specific assistant (e.g., "product_assistant").
+   - **Model**: Select the AI model that will power this assistant. For example, choose `gpt-4` or `gpt-4-mini` depending on your requirements.
+
+**Example Configuration:**
+
+```plaintext
+Title: Product Assistant
+Key: product_assistant
+Model: gpt-4
+Max prompt tokens: none
+Max completion tokens: 1.000
+Truncation Strategy: Last messages
+Last messages count: 10
+
+```
+
+4. **Define the Assistant’s Role and Instructions**:
+   - In the **Agent Details** section, define the role and responsibilities of the assistant. This includes its interaction model, context, and specific instructions it should follow.
+
+**Example Role and Instructions:**
+
+```plaintext
+Role: You are Sammy, a principal Product Owner. Your task is to assist the product owner with generating suggestions, creating artifacts, and attaching notes within the reqms.ai platform.
+
+Instructions:
+1. Understand and Clarify: Comprehend the tasks assigned by the product owner. Ask questions if necessary for clarification.
+2. Use of Tools: Determine the most efficient tools and methods for task completion.
+3. CRUD Requests: Use the internal API to load schema definitions or operation details beforehand.
+4. Make a Plan: Use a "Chain-of-Thought" approach to break down the tasks. Seek feedback from the product owner if needed.
+5. Execution: Implement the plan, assisting the product owner in their role.
+6. Feedback: Inform the product owner of the actions taken but don’t go into details unless required.
+7. Questions: Ask for any necessary clarifications. Highlight actions or questions in a separate message.
+```
+
+After entering the instructions, click **Submit**.
+
+5. **Assign Tools to the Assistant**:
+   - If you have already set up tools, you can assign them to the assistant for use in its tasks. This enhances the assistant’s capabilities, allowing it to perform specific functions such as making API calls or interacting with external services.
+
+**[INSERT DETAILS ABOUT ADVANCED SETTINGS HERE, IF AVAILABLE]**

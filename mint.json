@@ -34,11 +34,46 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Get started",
       "pages": [
-        "quickstart",
-        "development",
-        "Documentation"
+        "Introduction",
+        "Installation"
+      ]
+    },
+    {
+      "group": "Core Concepts",
+      "pages": [
+        "Projects",
+        "Tasks",
+        "Assistants",
+        "Tools"
+
+      ]
+    },
+    {
+      "group": "Advanced Features",
+      "pages": [
+        "Monitoring & Traceability",
+        "Multitenancy"
+      ]
+    },
+    {
+      "group": "Best Practices",
+      "pages": [
+        "Security",
+        "Performance Optimization"
+      ]
+    },
+    {
+      "group": "Troubleshooting",
+      "pages": [
+        "Common Issues"
+      ]
+    },
+    {
+      "group": "FAQ",
+      "pages": [
+        "Frequently Asked Questions"
       ]
     }
   ]

@@ -1,0 +1,67 @@
+## **1. Sign Up for an Account**
+
+To begin using Assistant-Engine, sign up for an account at:
+
+```plaintext
+https://assistant-engine.com
+```
+
+## **2. Choose Your Plan**
+
+After signing up, select a subscription plan that best suits your needs. Assistant-Engine offers three subscription tiers:
+
+| Feature                | Free Plan             | Pro Plan              | Enterprise Plan        |
+|------------------------|-----------------------|-----------------------|------------------------|
+| **Projects**           | 1 project             | 3 projects     | Unlimited              |
+| **Tasks**              | 3 tasks | 10 tasks| Unlimited              |
+| **Assistants**    | 1 assistant      | 5 assistants     | Unlimited              |
+| **Tools**         | 1 tool             | 10 tools          | Unlimited              |
+| **Calls**         | 500/month             | 10,000/month          | Unlimited              |
+| **Pay As You Go Option**         | No             | Soon         | Soon              |
+| **Multitasking (Tab view)**         | Yes                 | Yes              | Yes                   |
+| **Voice Integration via UI components**  | Yes                    | Yes                   | Yes                    |
+| **Context Management**  | Yes                    | Yes                   | Yes                    |
+| **Monitoring & Traceability**  | Yes                    | Yes                   | Yes                    |
+| **Support**            | Standard                     | Standard                     | Custom Support         |
+
+After selecting your plan, you will have access to the Assistant-Engine admin panel to begin integrating AI into your projects.
+
+## **3. PHP SDK Installation**
+
+To begin, install the Assistant-Engine PHP SDK via Composer:
+
+```bash
+composer require assistant-engine/sdk
+```
+
+## **4. Filament Plugin Installation (Optional)**
+
+To use the pre-built UI components in Filament, install the Filament plugin via GitHub:
+
+XYZ
+
+**[INSERT SCREENSHOT OF FILAMENT PLUGIN INSTALLATION HERE]**
+
+Alternatively, you can create your own components by directly using the Assistant-Engine API, giving you full control over the integration and customization.
+
+## **4. Environment Configuration**
+
+Add your Assistant-Engine API key to your `.env` file:
+
+```plaintext
+ASSISTANT_ENGINE_API_KEY=your_api_key_here
+```
+
+Ensure your Laravel application is properly configured to use this key:
+
+```php
+// config/assistant-engine.php
+
+return [
+    'api_key' => env('ASSISTANT_ENGINE_API_KEY', ''),
+];
+```
+
+> **Note:** Reference the [API Key Generation](#api-key-generation) section in the Core Concepts part for details on how to obtain your API key.
+
+> **Security Tip:** Ensure that your `.env` file is excluded from version control systems like Git to prevent exposing your API keys. Consider using environment variable management tools or services for enhanced security.

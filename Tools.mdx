@@ -1,0 +1,115 @@
+# **What are Tools?**
+
+Tools in Assistant-Engine are resources that assist assistants in performing their tasks. You can create tools that utilize external APIs or internal services, and they are configured using an OpenAPI schema.
+
+# **Creating a New Tool**
+
+Here’s how to create a new tool and integrate it with an OpenAPI schema:
+
+1. **Navigate to the Tools Section**:
+   - In the **Projects** panel, select your project (e.g., `reqms.ai | SaaS Platform`).
+   - Click on **Tools** in the sidebar.
+
+2. **Create a New Tool**:
+   - Click on **Add Tool** to open the tool creation form.
+
+3. **Enter Tool Details**:
+   - **Title**: Name your tool (e.g., "reqms.ai Internal API").
+   - **Description**: Provide a brief description of the tool and its purpose. This helps in understanding what the tool does within the context of the project.
+
+**Example:**
+
+```plaintext
+Title: reqms.ai Internal API
+Description: This tool allows the assistant to interact with the internal API of the reqms.ai platform to manage product ideas and related tasks.
+```
+
+4. **Provide the API Definition (OpenAPI Schema)**:
+   - In the **API Definition** section, include the OpenAPI schema that defines the API's endpoints, request and response formats, and other relevant details.
+
+**Example API Definition:**
+
+```yaml
+openapi: 3.0.0
+info:
+  title: reqms.ai Internal API
+  version: 1.0.0
+paths:
+  /products/{id}/ideas:
+    get:
+      tags:
+      - ideas
+      summary: List all product ideas
+      operationId: getAllIdeas
+      parameters:
+      - name: id
+        in: path
+        description: The id of the product
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of product ideas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductIdea'
+  /products/ideas:
+    post:
+      tags:
+      - ideas
+      summary: Create a new product idea
+      operationId: createProductIdea
+      requestBody:
+        description: Product idea data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductIdeaCreate'
+      responses:
+        '201':
+          description: Product idea created successfully
+components:
+  schemas:
+    ProductIdea:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+    ProductIdeaCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+```
+
+- Paste your OpenAPI schema in the provided field.
+
+5. **Save the Tool**:
+   - After filling in all the necessary details, click **Submit**. Your tool will now be available for use by assistants within the project.
+
+### **API Key Generation**
+
+To interact with the Assistant-Engine via API, you need to generate an API key:
+
+1. **Navigate to the Projects Section**:
+   - Select your project from the **Projects** panel.
+
+2. **Go to the API Keys Tab**:
+   - Click on the **API Keys** tab within your project overview.
+
+3. **Create an API Key**:
+   - Click **Create Token**.
+   - Name your token (e.g., "staging") and save it.
+
+You can now use this token to authenticate your API calls.
