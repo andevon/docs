@@ -2,24 +2,59 @@
 icon: "eye"
 ---
 
-Assistant-Engine enables you to check every execution down to the last word including a variety of features.
+Assistant-Engine provides extensive monitoring and traeability possibilities based on your subscription plan. You can track and analyze all AI interaction history, including messages, instructions, context, tool usage, and detailed API call (timing) information.
 
-## **Viewing Task or Assistant History**
+The feature is designed to help you debug and optimize tasks and assistants performances by reviewing how each execution was handled.
+Additionally you can keep track of llm usage and potential causes for high llm cost 
 
-To monitor and trace the execution of tasks:
-
-1. Go to the **Tasks** or **Assistants** section depending on which history you want to check.
-2. Select a task or assistant and click on the *History* tab to view its execution history. You will see a list of all the times the task was executed, along with details such as status and output.
-
-This feature helps you debug and optimize task and assistant performances by reviewing how each task was handled.
-
-**[INSERT SCREENSHOT OF TASK HISTORY VIEW HERE]**
-
-## **Detailed Monitoring Metrics**
+## **Monitoring Metrics**
 
 You can monitor various metrics such as:
 
-- **Timings**: Track how long tasks take to execute. See Run steps and Run duration as well as status (`incomplete`, `completed`)
+- **Timings** (Pro Plan): Track how long tasks take to execute. See Run steps and Run duration as well as status (`incomplete`, `completed`)
 - **Tool Calls**: Monitor the tools called in the selected run and their request and response details.
 - **LLM Configuration**: For every message sent you can view historic information about **Instructions**, **Context**, **Tools**, **User Message, Chat History & LLM Response** used as well as the total **Raw Data** sent to and received from the LLM.
 - **Prompt Tokens** and **Completion Tokens**: Token count used in prompt and response to/from LLM
+
+## **Task Execution History**
+
+
+- Go to the **Tasks** section within your project.
+- Select a task and click on the *History* tab to view its execution history. 
+- You will see a list of all the times the Task was executed, along with details such as status and output.
+
+## **Assistant Execution History**
+
+
+- Go to the **Assistants** section within your project.
+- Select an Assistant and click on the *History* tab to view its execution history. 
+- You will see a list of all the times the Assistant was executed, along with details such as status and output.
+
+## **Tool Execution History**
+
+
+- Go to the **Tools** section within your project.
+- Select a Tool and click on the *Tool Calls* tab to view its execution history. 
+- You will see a list of all the times the Tool was called, along with details such as
+    - Task or Assistant that triggered tool call
+    - Conversation id
+    - Response status
+    - Request function
+    - Date and Time of call
+
+
+<Frame>
+  <img src="images/assistant-engine-monitoring-tools-overview.png" alt="Tools Monitoring Overview"/>
+</Frame>
+
+- Click any table entry to get further information on the specific tool execution:
+
+<Frame>
+  <img src="images/assistant-engine-monitoring-tools-details-tool-call.png" alt="Tools Monitoring Detail Tool Call"/>
+</Frame>
+
+<Frame>
+  <img src="images/assistant-engine-monitoring-tools-details-api-request.png" alt="Tools Monitoring Detail API Request"/>
+</Frame>
+
+
