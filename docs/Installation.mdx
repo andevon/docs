@@ -20,12 +20,11 @@ To begin using Assistant-Engine, sign up for an account at:
 ```plaintext
 https://assistant-engine.com
 ```
+<Frame>
+  <img src="images/assistant-engine-home.png" alt="Homepage"/>
+</Frame>
 
-<img src="images/assistant-engine-home.png" alt="Homepage" width="50%" style="display: block; margin: 0 auto;" />
-
-
-
-## ** Choose Your Plan**
+## **Choose Your Plan**
 
 After signing up, select a subscription plan that best suits your needs. Assistant-Engine offers three subscription tiers:
 
@@ -43,7 +42,10 @@ After signing up, select a subscription plan that best suits your needs. Assista
 | **Monitoring & Traceability**  | Yes                    | Yes                   | Yes                    |
 | **Support**            | Standard                     | Standard                     | Custom Support         |
 
-After selecting your plan, you will have access to the Assistant-Engine admin panel to begin integrating AI into your projects.
+We use Stripe as Payment Provider.
+
+After selecting your plan, have access to the Assistant-Engine admin panel to begin integrating AI into your projects.
+To set up a [Project](/docs/Projects), [Tasks](/docs/Tasks), [Assistants](/docs/Assistants), and [Tools](/docs/Tools) please refer to the Instructions in the [Core Concepts](/docs/Projects).
 
 ## **PHP SDK Installation**
 
@@ -81,6 +83,6 @@ return [
 ];
 ```
 
-> **Note:** Reference the [API Key Generation](#api-key-generation) section in the Core Concepts part for details on how to obtain your API key.
+> **Note:** For details on how to obtain your personal access token see the [API Key](/docs/Projects#api-key) section in [Projects](/docs/Projects).
 
 > **Security Tip:** Ensure that your `.env` file is excluded from version control systems like Git to prevent exposing your API keys. Consider using environment variable management tools or services for enhanced security.

@@ -1,0 +1,36 @@
+---
+icon: "wrench"
+---
+
+## **What are Tools?**
+
+Tools in Assistant-Engine are resources that tasks and assistant use to accomplish their job. You can create tools that utilize external APIs or internal services, and they are configured using an OpenAPI schema.
+
+## **Creating a New Tool**
+
+Here’s how to create a new tool and integrate it with an OpenAPI schema:
+
+1. **Navigate to the Tools Section**:
+   - In the **Projects** panel, select your project (e.g., `reqms.ai | SaaS Platform`).
+   - Click on **Tools** in the sidebar.
+
+2. **Create a New Tool**:
+   - Click on **Add Tool** (or **Create Tool** if you have not yet created any) to open the tool creation form.
+
+<Frame>
+  <img src="images/assistant-engine-tools-home.png" alt="Tools"/>
+</Frame>
+
+3. **Enter Tool Details**:
+   - **Title**: Name your tool (e.g., "reqms.ai Internal API").
+   - **Description**: Provide a brief description of the tool and its purpose. This helps in understanding what the tool does within the context of the project.
+   - **Provide the API Definition (OpenAPI Schema)**: In the **API Definition** section, include
+      - **Endpoint:** Endpoint url
+      - **OpenAPI Schema:** OpenAPI schema that defines the API's endpoints, request and response formats, and other relevant details.
+
+<Frame>
+  <img src="images/assistant-engine-tools-creation.png" alt="Tools Creation"/>
+</Frame>
+
+5. **Save the Tool**:
+   - After filling in all the necessary details, click **Submit**. Your tool will now be available for use by [Tasks](/docs/Tasks#add-tools) and [Assistants](/docs/Assistants#add-tools) within the project.

@@ -1,0 +1,91 @@
+---
+icon: "comments"
+---
+
+## **What are Assistants?**
+
+Assistants in Assistant-Engine are designed to perform more complex, iterative tasks based on the configurations you provide. They are typically but not necessarily used in chat assistants such as our pre-built chat assistant UI component for Filament. 
+
+## **Setting Up an Assistant**
+
+1. **Navigate to the Assistants Section**:
+   - In the **Projects** panel, select your project (e.g., `reqms.ai | SaaS Platform`).
+   - Click on **Assistants** in the sidebar.
+
+2. **Create a New Assistant**:
+   - Click on **New Assistant** (or **Create Assistant** if you have not yet created any) to open the assistant creation form.
+
+<Frame>
+  <img src="images/assistant-engine-assistants-home.png" alt="Assistants"/>
+</Frame>
+
+
+3. **Enter Assistant Details**:
+   - **Title**: Name your assistant (e.g., "Product Assistant").
+   - **Key**: A unique slug is generated from the title used to identify the individual assistant in API requests.
+   - **Model**: Select the AI model that will power this assistant. For example, choose `gpt-4` or `gpt-4-mini` depending on your requirements.
+   - **Instructions (Greeting)**: Define the role and responsibilities of the assistant. This includes its interaction model, context, and specific instructions it should follow.
+
+<Frame>
+  <img src="images/assistant-engine-assistants-creation.png" alt="Assistants Creation"/>
+</Frame>
+
+**Example Configuration:**
+
+```plaintext
+Title: Product Assistant
+Key: product_assistant (automatically assigned)
+Model: gpt-4o
+```
+
+**Example Role and Instructions:**
+
+```plaintext
+Role: 
+   You are Sammy, a principal Product Owner. 
+   Your task is to assist the product owner with generating 
+   suggestions, creating artifacts, and attaching notes within 
+   the reqms.ai platform.
+
+Instructions:
+   1. Understand and Clarify: Comprehend the tasks assigned 
+      by the product owner. Ask questions if necessary for clarification.
+   2. Use of Tools: Determine the most efficient tools and 
+      methods for task completion.
+   3. CRUD Requests: Use the internal API to load schema 
+      definitions or operation details beforehand.
+   4. Make a Plan: Use a "Chain-of-Thought" approach to 
+      break down the tasks. Seek feedback from the product 
+      owner if needed.
+   5. Execution: Implement the plan, assisting the product 
+      owner in their role.
+   6. Feedback: Inform the product owner of the actions taken 
+      but don’t go into details unless required.
+   7. Questions: Ask for any necessary clarifications. Highlight 
+      actions or questions in a separate message.
+
+Greetings Instructions:
+   Be formal and polite.
+```
+
+After entering the instructions, click **Submit**.
+
+## **Advanced Settings**
+
+Upon Assistant creation you can add further optional settings by clicking anywhere in the **Agent Details** Section:
+
+   - **Max prompt tokens:** Limit the amount of tokens sent to the llm in order to prevent excessive llm costs.
+   - **Max completion tokens:** Limit the amount of tokens received from the llm to prevent excessive llm costs.
+   - **Truncation Strategy**: Set to **Auto** by default. Let's you define the number of **Last Messages** sent to the llm.
+
+<Frame>
+  <img src="images/assistant-engine-assistant-additional-settings.png" alt="Assistants Additional Settings"/>
+</Frame>
+
+## **Add Tools**
+   
+If you have already set up tools, you can assign them to the assistant for use in its tasks. This enhances the assistant’s capabilities, allowing it to perform specific functions such as making API calls or interacting with external services.
+
+<Frame>
+  <img src="images/assistant-engine-assistant-add-tools.png" alt="Assistants Additional Settings"/>
+</Frame> 
