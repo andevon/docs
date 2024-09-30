@@ -2,7 +2,7 @@
 icon: "eye"
 ---
 
-Assistant-Engine provides extensive monitoring and traeability possibilities based on your subscription plan. You can track and analyze all AI interaction history, including messages, instructions, context, tool usage, and detailed API call (timing) information.
+Assistant-Engine provides extensive monitoring and traceability possibilities based on your subscription plan. You can track and analyze all AI interaction history, including messages, instructions, context, tool usage, and detailed API call (timing) information.
 
 The feature is designed to help you debug and optimize tasks and assistants performances by reviewing how each execution was handled.
 Additionally you can keep track of llm usage and potential causes for high llm cost 
@@ -11,26 +11,92 @@ Additionally you can keep track of llm usage and potential causes for high llm c
 
 You can monitor various metrics such as:
 
-- **Timings** (Pro Plan): Track how long tasks take to execute. See Run steps and Run duration as well as status (`incomplete`, `completed`)
+- **Timings** (only in Pro Plan): Track how long tasks take to execute. See Run steps and Run duration as well as status (`incomplete`, `completed`)
 - **Tool Calls**: Monitor the tools called in the selected run and their request and response details.
 - **LLM Configuration**: For every message sent you can view historic information about **Instructions**, **Context**, **Tools**, **User Message, Chat History & LLM Response** used as well as the total **Raw Data** sent to and received from the LLM.
-- **Prompt Tokens** and **Completion Tokens**: Token count used in prompt and response to/from LLM
+- **Prompt Tokens*** and **Completion Tokens***: Token count used in prompt and response to/from LLM
 
-## **Task Execution History**
+> ***Note:** Token counts are estimations based on information provided by the llm provider via API. For actual usage information refer to the llm providers information directly.  
+
+## **Task Execution Monitoring**
 
 
 - Go to the **Tasks** section within your project.
 - Select a task and click on the *History* tab to view its execution history. 
 - You will see a list of all the times the Task was executed, along with details such as status and output.
 
-## **Assistant Execution History**
+
+## **Assistant Execution Monitoring**
 
 
 - Go to the **Assistants** section within your project.
-- Select an Assistant and click on the *History* tab to view its execution history. 
-- You will see a list of all the times the Assistant was executed, along with details such as status and output.
+- Select an Assistant and click on the `History` tab to view its execution history. 
+- You will see a list of all the times the Assistant was executed, along with details such as
+    - Date and Time of conversation
+    - Conversation id
+    - User
+    - Status
+    - Message
 
-## **Tool Execution History**
+
+<Frame>
+  <img src="images/assistant-engine-monitoring-assistants-overview.png" alt="Assistants Monitoring Overview"/>
+</Frame>
+
+- Click a table entry to get further information on the specific conversation-id including:
+    - Total conversation history
+    - Conversation status: `active`, `inactive`
+    - Total Prompt Tokens: Aggregated outgoing token count to the llm for the selected conversation
+    - Total Completion Tokens: Aggregated incoming token count from the llm for the selected conversation
+    - Total Token Count: `Total Prompt Tokens`+ `Total Completion Tokens`
+    - Last Run Status: Status of the last run in the conversation - `complete`, `incomplete``
+    - Context and User Information 
+
+
+<Frame>
+  <img src="images/assistant-engine-monitoring-assistants-details.png" alt="Assistants Monitoring Conversation Details"/>
+</Frame>
+
+- Click a message to to get additional information on the specific run for that message including:
+    - **Run Configuration:** Details about **Model**, **Token limits** and **Truncation Strategy**
+    - **Run Results:** Detailed run information about **Status**, **Duration** and **Token counts**
+    - **LLM Data:** All information processed for the specific run
+        - **Instruction:** Instruction valid at the time of run
+        - **Context:** Context as defined at the time of run
+        - **Tools:** Tools assigned to and used by Assistant at the time of run
+        - **Chat:** Chat History and User Message used in run as well as Response
+        - **Raw:** Entirety of llm input data based on the aforementioned details AND Raw llm output data.
+    
+
+<Frame>
+  <img src="images/assistant-engine-monitoring-assistants-run-overview.png" alt="Assistants Monitoring Run Overview"/>
+</Frame>
+
+- Click `Steps` tab to get detailled information broken down into the steps taken
+    - **Step Type:** `Message Creation`, `Tool Calls`
+    - **Processing Status:** `complete`, ìncomplete``
+    - **Step Duration:** in seconds
+    - **Tokens per second:** llm output/execution speed
+    - **Token counts:** **Prompt Tokens**, **Completion Tokens** and **Total Tokens** for this step of the run
+    - **Tool Calls:** Request and Response information for the individual tool call
+
+
+<Frame>
+  <img src="images/assistant-engine-monitoring-assistants-run-steps.png" alt="Assistants Monitoring Run Steps"/>
+</Frame>
+
+
+Pro Plan only
+
+- Click `Timing` tab to get visual insights into detailed runtimes for each action.
+
+<Frame>
+  <img src="images/assistant-engine-monitoring-assistants-run-timing.png" alt="Assistants Monitoring Run Timing"/>
+</Frame>
+
+
+
+## **Tool Execution Monitoring**
 
 
 - Go to the **Tools** section within your project.
@@ -47,11 +113,13 @@ You can monitor various metrics such as:
   <img src="images/assistant-engine-monitoring-tools-overview.png" alt="Tools Monitoring Overview"/>
 </Frame>
 
-- Click any table entry to get further information on the specific tool execution:
+- Click any table entry to get further information on the specific tool execution
 
 <Frame>
   <img src="images/assistant-engine-monitoring-tools-details-tool-call.png" alt="Tools Monitoring Detail Tool Call"/>
 </Frame>
+
+- The `API-Request` tab provides additional information
 
 <Frame>
   <img src="images/assistant-engine-monitoring-tools-details-api-request.png" alt="Tools Monitoring Detail API Request"/>
