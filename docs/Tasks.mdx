@@ -38,9 +38,9 @@ Expected Output: A concise and clear version of the input text.
 
 4. Fill in Agent Details for the task:
    - **Model**: Choose the model you want the task to run (GPT-4o or GPT-4o mini).
-   - **Max. prompt tokens**: You can set a token limit for llm request to cap the token count to ensure communication with the llm does not cause unexpectedly high costs (Might negatively influence performance)
-   - **Max. completion tokens**: Option to set a token limit for llm response
-   - **Truncation Strategy**: Default is set to "auto". Option to choose "Last Messages" enabling possibility to set manual max "Last Message Count" to include in llm request.
+   - **Max. prompt tokens**: You can set a token limit for LLM request to cap the token count to ensure communication with the LLM does not cause unexpectedly high costs (Might negatively influence performance)
+   - **Max. completion tokens**: Option to set a token limit for LLM response
+   - **Truncation Strategy**: Default is set to "auto". Option to choose "Last Messages" enabling possibility to set manual max "Last Message Count" to include in LLM request.
    - **Instructions**: A description of how the task is supposed to be completed.
 
 <Frame>
@@ -57,6 +57,8 @@ the reader. Make sure not to loose any information when updating
 the text. Keep the general tone of the input text. Only answer 
 with the text and nothing more.
 ```
+
+> **Note:** Crafting an effective prompt is a balance between precision and brevity. It should be specific enough to achieve the desired outcome, yet concise to minimize costs and avoid overwhelming the LLM, ensuring optimal comprehension. For further guidance, refer to the [OpenAI Prompt Engineering Guidebook](https://platform.openai.com/docs/guides/prompt-engineering).
 
 Save the task. You can now see it listed in the Tasks section.
 

@@ -5,37 +5,39 @@ icon: "eye"
 Assistant-Engine provides extensive monitoring and traceability possibilities based on your subscription plan. You can track and analyze all AI interaction history, including messages, instructions, context, tool usage, and detailed API call (timing) information.
 
 The feature is designed to help you debug and optimize tasks and assistants performances by reviewing how each execution was handled.
-Additionally you can keep track of llm usage and potential causes for high llm cost 
+Additionally you can keep track of LLM usage and potential causes for high LLM cost 
 
 ## **Monitoring Metrics**
 
-You can monitor various metrics such as:
+You can monitor various metrics and information such as:
 
-- **Timings** (only in Pro Plan): Track how long tasks take to execute. See Run steps and Run duration as well as status (`incomplete`, `completed`)
+- **Timings** (only in Pro Plan): Track how long each step of a run takes to execute. See run steps and run duration as well as status (`incomplete`, `completed`)
 - **Tool Calls**: Monitor the tools called in the selected run and their request and response details.
 - **LLM Configuration**: For every message sent you can view historic information about **Instructions**, **Context**, **Tools**, **User Message, Chat History & LLM Response** used as well as the total **Raw Data** sent to and received from the LLM.
 - **Prompt Tokens*** and **Completion Tokens***: Token count used in prompt and response to/from LLM
 
-> ***Note:** Token counts are estimations based on information provided by the llm provider via API. For actual usage information refer to the llm providers information directly.  
+> ***Note:** Token counts are estimations based on information provided by the LLM provider via API. For actual usage information refer to the LLM providers information directly.  
+
 
 ## **Task Execution Monitoring**
 
 
 - Go to the **Tasks** section within your project.
 - Select a task and click on the *History* tab to view its execution history. 
-- You will see a list of all the times the Task was executed, along with details such as status and output.
+- You will see a list of all the times the Task was executed, along with initial details about
+    -   
 
 
 ## **Assistant Execution Monitoring**
 
 
 - Go to the **Assistants** section within your project.
-- Select an Assistant and click on the `History` tab to view its execution history. 
+- Select an Assistant and click on the *History* tab to view its execution history. 
 - You will see a list of all the times the Assistant was executed, along with details such as
     - Date and Time of conversation
     - Conversation id
     - User
-    - Status
+    - Status (`complete, `incomplete`)
     - Message
 
 
@@ -44,13 +46,14 @@ You can monitor various metrics such as:
 </Frame>
 
 - Click a table entry to get further information on the specific conversation-id including:
-    - Total conversation history
-    - Conversation status: `active`, `inactive`
-    - Total Prompt Tokens: Aggregated outgoing token count to the llm for the selected conversation
-    - Total Completion Tokens: Aggregated incoming token count from the llm for the selected conversation
-    - Total Token Count: `Total Prompt Tokens`+ `Total Completion Tokens`
-    - Last Run Status: Status of the last run in the conversation - `complete`, `incomplete``
-    - Context and User Information 
+    - Entire conversation(-id) history
+    - Context and User Information
+    - **Conversation status:** `active`, `inactive`
+    - **Total Prompt Tokens:** Aggregated outgoing token count to the LLM for the selected conversation
+    - **Total Completion Tokens:** Aggregated incoming token count from the LLM for the selected conversation
+    - **Total Token Count:** `Total Prompt Tokens`+ `Total Completion Tokens`
+    - **Last Run Status:** Status of the last run in the conversation - `complete`, `incomplete``
+
 
 
 <Frame>
@@ -65,7 +68,7 @@ You can monitor various metrics such as:
         - **Context:** Context as defined at the time of run
         - **Tools:** Tools assigned to and used by Assistant at the time of run
         - **Chat:** Chat History and User Message used in run as well as Response
-        - **Raw:** Entirety of llm input data based on the aforementioned details AND Raw llm output data.
+        - **Raw:** Entirety of LLM input data based on the aforementioned details AND Raw LLM output data.
     
 
 <Frame>
@@ -74,9 +77,9 @@ You can monitor various metrics such as:
 
 - Click `Steps` tab to get detailled information broken down into the steps taken
     - **Step Type:** `Message Creation`, `Tool Calls`
-    - **Processing Status:** `complete`, ìncomplete``
+    - **Processing Status:** `complete`, `incomplete`
     - **Step Duration:** in seconds
-    - **Tokens per second:** llm output/execution speed
+    - **Tokens per second:** LLM output/execution speed
     - **Token counts:** **Prompt Tokens**, **Completion Tokens** and **Total Tokens** for this step of the run
     - **Tool Calls:** Request and Response information for the individual tool call
 
