@@ -8,25 +8,25 @@ icon: "rocket"
 Before installing Assistant-Engine, ensure you have the following prerequisites:
 
 - **PHP**: Version 8.0 or higher
-- **Laravel**: Version 9.x or higher
 - **Composer**: Latest stable version
 - **Filament**: Optional, for using pre-built UI components
+- **Laravel**: Optional, for using pre-built UI components
 
 
 ## **Sign Up for an Account**
 
-To begin using Assistant-Engine, sign up for an account at:
+To begin using Assistant-Engine, sign up for an account at https://assistant-engine.com
 
-```plaintext
-https://assistant-engine.com
-```
 <Frame>
   <img src="images/assistant-engine-home.png" alt="Homepage"/>
 </Frame>
 
 ## **Choose Your Plan**
 
-After signing up, select a subscription plan that best suits your needs. Assistant-Engine offers three subscription tiers:
+Assistant-Engine offers three subscription tiers.
+After signing up, you will be automatically assigned to our Free subscription plan.
+If you need more liberty feel free to upgrade or get in touch. 
+
 
 | Feature                | Free Plan             | Pro Plan              | Enterprise Plan        |
 |------------------------|-----------------------|-----------------------|------------------------|
@@ -42,10 +42,10 @@ After signing up, select a subscription plan that best suits your needs. Assista
 | **Monitoring & Traceability**  | Basic                    | Pro                   | Pro                    |
 | **Support**            | Standard                     | Preferred                     | Custom Support         |
 
-We use Stripe as Payment Provider.
+> A Call is defined as one request sent by Asssitant-Engine to the openAI API. Depending on the user request’s content multiple calls may be executed to fulfill the task of a single user request.
 
-After selecting your plan, have access to the Assistant-Engine admin panel to begin integrating AI into your projects.
-To set up a [Project](/docs/Projects), [Tasks](/docs/Tasks), [Assistants](/docs/Assistants), and [Tools](/docs/Tools) please refer to the Instructions in the [Core Concepts](/docs/Projects).
+Once you have access to the Assistant-Engine admin panel to begin integrating AI into your projects.
+To set up a [Project](/docs/Projects), [Tasks](/docs/Tasks), [Assistants](/docs/Assistants), and [Tools](/docs/Tools) please refer to the Instructions in the [Assistant-Engine section](/docs/Projects).
 
 ## **PHP SDK Installation**
 
@@ -57,11 +57,9 @@ composer require assistant-engine/sdk
 
 ## **Filament Plugin Installation (Optional)**
 
-To use the pre-built UI components in Filament, install the Filament plugin via GitHub:
+Assistant-Engine comes with free to use pre-built UI components for Filament.
 
-XYZ
 
-**[INSERT SCREENSHOT OF FILAMENT PLUGIN INSTALLATION HERE]**
 
 Alternatively, you can create your own components by directly using the Assistant-Engine API, giving you full control over the integration and customization.
 

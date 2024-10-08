@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:florian.g.weigang@gmail.com"
+      "url": "mailto:contact@assistant-engine.com"
     }
   ],
   "topbarCtaButton": {
@@ -37,36 +37,30 @@
       "group": "Get started",
       "pages": [
         "docs/Introduction",
-        "docs/Installation"
+        "docs/Quick_Start"
       ]
     },
     {
-      "group": "Core Concepts",
+      "group": "Assistant-Engine",
 
       "pages": [
         "docs/Projects",
         "docs/Tasks",
         "docs/Assistants",
-        "docs/Tools"
+        "docs/Tools",
+        "docs/Monitoring_&_Traceability"
       ]
     },
     {
-      "group": "Advanced Features",
+      "group": "Filament Plugin",
       "pages": [
         "docs/Monitoring_&_Traceability"
       ]
     },
     {
-      "group": "Best Practices",
+      "group": "Laravel Plugin",
       "pages": [
-        "docs/Security",
-        "docs/Performance_Optimization"
-      ]
-    },
-    {
-      "group": "Troubleshooting",
-      "pages": [
-        "docs/Common_Issues"
+        "docs/Security"
       ]
     },
     {

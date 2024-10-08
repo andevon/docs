@@ -4,7 +4,10 @@ icon: "comments"
 
 ## **What are Assistants?**
 
-Assistants in Assistant-Engine are designed to perform more complex, iterative tasks based on the configurations you provide. They are typically but not necessarily used in chat assistants such as our pre-built chat assistant UI component for Filament. 
+Assistants are designed to perform more complex, iterative tasks based on the configurations you provide. 
+They are typically but not necessarily used in chat assistants such as our pre-built UI components for Filament and Laravel.
+Assistant-Engine ensures seamless integration via the admin panel, handling user requests by considering predefined context and logic. 
+It manages the flow from user interaction to action, connecting with APIs and executing tasks efficiently according to the setup established in the admin panel.
 
 ## **Setting Up an Assistant**
 
@@ -23,7 +26,7 @@ Assistants in Assistant-Engine are designed to perform more complex, iterative t
 3. **Enter Assistant Details**:
    - **Title**: Name your assistant (e.g., "Product Assistant").
    - **Key**: A unique slug is generated from the title used to identify the individual assistant in API requests.
-   - **Model**: Select the AI model that will power this assistant. For example, choose `gpt-4` or `gpt-4-mini` depending on your requirements.
+   - **Model**: Select the AI model that will power this assistant. For example, choose `gpt-4o` or `gpt-4o-mini` depending on your requirements.
    - **Instructions (Greeting)**: Define the role and responsibilities of the assistant. This includes its interaction model, context, and specific instructions it should follow.
 
 <Frame>
@@ -82,7 +85,7 @@ Upon Assistant creation you can add further optional settings by clicking anywhe
    - **Truncation Strategy**: Set to **Auto** by default. Let's you define the number of **Last Messages** sent to the  LLM .
 
 <Frame>
-  <img src="images/assistant-engine-assistant-additional-settings.png" alt="Assistants Additional Settings"/>
+  <img src="images/assistant-engine-assistants-llm-settings.png" alt="Assistants LLM Settings"/>
 </Frame>
 
 ## **Add Tools**

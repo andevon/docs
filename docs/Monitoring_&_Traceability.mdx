@@ -2,19 +2,19 @@
 icon: "eye"
 ---
 
-Assistant-Engine provides extensive monitoring and traceability possibilities based on your subscription plan. You can track and analyze all AI interaction history, including messages, instructions, context, tool usage, and detailed API call (timing) information.
-
-The feature is designed to help you debug and optimize tasks and assistants performances by reviewing how each execution was handled.
-Additionally you can keep track of LLM usage and potential causes for high LLM cost 
+Assistant-Engine provides extensive monitoring and traceability features based on your subscription plan. 
+You can track and analyze all AI interaction history, including messages, instructions, context, tool usage, and detailed API call (timing) information. 
+The platform ensures full visibility into the execution of tasks and assistants, allowing you to debug and optimize performance efficiently. 
+Additionally, Assistant-Engine helps monitor and manage LLM usage, offering insights into potential cost drivers and enabling more effective resource allocation.
 
 ## **Monitoring Metrics**
 
 You can monitor various metrics and information such as:
 
-- **Timings** (only in Pro Plan): Track how long each step of a run takes to execute. See run steps and run duration as well as status (`incomplete`, `completed`)
-- **Tool Calls**: Monitor the tools called in the selected run and their request and response details.
+- **Timings** (only in Pro Plan): Track how long each step of a run takes to execute. See run steps and run duration as well as **Token per second** counts and statuses (`incomplete`, `completed`)
+- **Tool Calls**: Monitor the tools called in every single run and their request and response details.
 - **LLM Configuration**: For every message sent you can view historic information about **Instructions**, **Context**, **Tools**, **User Message, Chat History & LLM Response** used as well as the total **Raw Data** sent to and received from the LLM.
-- **Prompt Tokens*** and **Completion Tokens***: Token count used in prompt and response to/from LLM
+- **Prompt Tokens*** and **Completion Tokens***: Token count used in each request and response to/from the LLM
 
 > ***Note:** Token counts are estimations based on information provided by the LLM provider via API. For actual usage information refer to the LLM providers information directly.  
 
