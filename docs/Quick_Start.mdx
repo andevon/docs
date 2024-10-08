@@ -27,60 +27,32 @@ Assistant-Engine offers three subscription tiers.
 After signing up, you will be automatically assigned to our Free subscription plan.
 If you need more liberty feel free to upgrade or get in touch. 
 
+<Frame>
+  <img src="images/assistant-engine-plans.png" alt="Plans"/>
+</Frame>
 
-| Feature                | Free Plan             | Pro Plan              | Enterprise Plan        |
-|------------------------|-----------------------|-----------------------|------------------------|
-| **Projects**           | 1 project             | 3 projects     | Unlimited              |
-| **Tasks**              | 3 tasks | 10 tasks| Unlimited              |
-| **Assistants**    | 1 assistant      | 5 assistants     | Unlimited              |
-| **Tools**         | 1 tool             | 10 tools          | Unlimited              |
-| **Calls**         | 500/month             | 10,000/month          | Unlimited              |
-| **Pay As You Go Option**         | No             | Soon         | Soon              |
-| **Multitasking (Tab view)**         | Yes                 | Yes              | Yes                   |
-| **Voice Integration via UI components**  | Yes                    | Yes                   | Yes                    |
-| **Context Management**  | Yes                    | Yes                   | Yes                    |
-| **Monitoring & Traceability**  | Basic                    | Pro                   | Pro                    |
-| **Support**            | Standard                     | Preferred                     | Custom Support         |
 
-> A Call is defined as one request sent by Asssitant-Engine to the openAI API. Depending on the user request’s content multiple calls may be executed to fulfill the task of a single user request.
+> **Note:** In Assistant-Engine, a 'Call' refers specifically to interactions with the OpenAI API, and it includes the following actions:
+> - The execution of a task.
+> - The creation of a new conversation.
+> - The processing of a new message within an existing conversation.  
+> 
+> Each of these actions triggers a new AssistantThreadRun with OpenAI in the background. Even if an error occurs during the AssistantThreadRun, it still counts as a call. Internal services that do not involve OpenAI are not counted toward your call limit. This ensures that only interactions that directly utilize the OpenAI API affect your call count.
+
 
 Once you have access to the Assistant-Engine admin panel to begin integrating AI into your projects.
 To set up a [Project](/docs/Projects), [Tasks](/docs/Tasks), [Assistants](/docs/Assistants), and [Tools](/docs/Tools) please refer to the Instructions in the [Assistant-Engine section](/docs/Projects).
 
-## **PHP SDK Installation**
 
-To begin, install the Assistant-Engine PHP SDK via Composer:
+## **Filament Plugin (Optional)**
 
-```bash
-composer require assistant-engine/sdk
-```
-
-## **Filament Plugin Installation (Optional)**
-
-Assistant-Engine comes with free to use pre-built UI components for Filament.
-
-
-
+Assistant-Engine comes with free to use pre-built UI components for Filament you can use to execute tasks or integrate a chat assistant into your Filament project.
 Alternatively, you can create your own components by directly using the Assistant-Engine API, giving you full control over the integration and customization.
+For instructions on how to do so and how to install the Plugin visit the detailed [Filament Plugin Installation Guide](/docs/Filament)
 
-## **Environment Configuration**
+## **Laravel Plugin (Optional)**
 
-Add your Assistant-Engine API key to your `.env` file:
+Assistant-Engine provides free to use pre-built UI components for Laravel you can use to execute tasks or integrate a chat assistant into your Laravel software project.
+Alternatively, you can create your own components by directly using the Assistant-Engine API, giving you full control over the integration and customization.
+For instructions on how to do so and how to install the Plugin visit the detailed [Laravel Plugin Installation Guide](/docs/Laravel)
 
-```plaintext
-ASSISTANT_ENGINE_API_KEY=your_api_key_here
-```
-
-Ensure your Laravel application is properly configured to use this key:
-
-```php
-// config/assistant-engine.php
-
-return [
-    'api_key' => env('ASSISTANT_ENGINE_API_KEY', ''),
-];
-```
-
-> **Note:** For details on how to obtain your personal access token see the [API Key](/docs/Projects#api-key) section in [Projects](/docs/Projects).
-
-> **Security Tip:** Ensure that your `.env` file is excluded from version control systems like Git to prevent exposing your API keys. Consider using environment variable management tools or services for enhanced security.

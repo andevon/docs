@@ -54,13 +54,20 @@
     {
       "group": "Filament Plugin",
       "pages": [
-        "docs/Monitoring_&_Traceability"
+        "docs/Filament/Overview",
+        "docs/Filament/Installation",
+        "docs/Filament/Configuration",
+        "docs/Filament/Usage"
       ]
     },
     {
       "group": "Laravel Plugin",
       "pages": [
-        "docs/Security"
+        "docs/Laravel/Overview",
+        "docs/Laravel/Installation",
+        "docs/Laravel/Configuration",
+        "docs/Laravel/Usage"
+
       ]
     },
     {
